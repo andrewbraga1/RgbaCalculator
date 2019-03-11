@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/main_alpha_text"
+        android:layout_width="160dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:hint="Alpha value"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AlphaLabel" />
+
+    <TextView
+        android:id="@+id/main_blue_text"
+        android:layout_width="160dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="Blue value"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/main_view_color"
+        app:layout_constraintTop_toBottomOf="@+id/BlueLabel" />
+
+    <View
+        android:id="@+id/main_view_color"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_green_text"
+        android:layout_width="160dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:hint="Green value"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GreenLabel" />
+
+    <TextView
+        android:id="@+id/main_red_text"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:hint=" Red value"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RedLabel" />
+
+    <SeekBar
+        android:id="@+id/main_red_seekBar"
+        android:layout_width="308dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_red_text"
+        app:layout_constraintHorizontal_bias="0.35" />
+
+    <SeekBar
+        android:id="@+id/main_green_seekBar"
+        android:layout_width="308dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_green_text"
+        app:layout_constraintHorizontal_bias="0.35" />
+
+    <SeekBar
+        android:id="@+id/main_blue_seekBar"
+        android:layout_width="308dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_blue_text"
+        app:layout_constraintHorizontal_bias="0.35" />
+
+    <SeekBar
+        android:id="@+id/main_alpha_seekBar"
+        android:layout_width="308dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:max="255"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_alpha_text"
+        app:layout_constraintHorizontal_bias="0.35" />
+
+    <TextView
+        android:id="@+id/RedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Red"
+        app:layout_constraintTop_toBottomOf="@+id/main_view_color"
+        tools:text="Red"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/main_view_color" />
+
+    <TextView
+        android:id="@+id/GreenLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Green"
+        app:layout_constraintTop_toBottomOf="@+id/main_red_seekBar"
+        tools:text="Green"
+        app:layout_constraintLeft_toLeftOf="@+id/main_red_seekBar" />
+
+    <TextView
+        android:id="@+id/BlueLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Blue"
+        app:layout_constraintTop_toBottomOf="@+id/main_green_seekBar"
+        tools:text="Blue"
+        app:layout_constraintLeft_toLeftOf="@+id/main_green_seekBar" />
+
+    <TextView
+        android:id="@+id/AlphaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Aplha"
+        app:layout_constraintTop_toBottomOf="@+id/main_blue_seekBar"
+        tools:text="Alpha"
+        app:layout_constraintLeft_toLeftOf="@+id/main_blue_seekBar" />
+
+    <TextView
+        android:id="@+id/main_red_hex_text"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Hexa value"
+        app:layout_constraintBottom_toBottomOf="@+id/main_red_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/main_red_text"
+        app:layout_constraintTop_toTopOf="@+id/main_red_text" />
+
+    <TextView
+        android:id="@+id/main_green_hex_text"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Hexa Value"
+        app:layout_constraintBottom_toBottomOf="@+id/main_green_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_green_text"
+        app:layout_constraintTop_toTopOf="@+id/main_green_text" />
+
+    <TextView
+        android:id="@+id/main_blue_hex_text"
+        android:layout_width="126dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Hexa Value"
+        app:layout_constraintBottom_toBottomOf="@+id/main_blue_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_blue_text"
+        app:layout_constraintTop_toTopOf="@+id/main_blue_text" />
+
+    <TextView
+        android:id="@+id/main_alpha_hex_text"
+        android:layout_width="126dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Hexa Value"
+        app:layout_constraintBottom_toBottomOf="@+id/main_alpha_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_alpha_text"
+        app:layout_constraintTop_toTopOf="@+id/main_alpha_text" />
+
+</android.support.constraint.ConstraintLayout>
