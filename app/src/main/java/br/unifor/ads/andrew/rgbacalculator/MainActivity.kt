@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.SeekBar
+import java.lang.Integer.parseInt
 
 class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
@@ -110,9 +111,9 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         mEditText_Red_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
-                val value = mEditText_Red_Hex.text
-                mEditText_Red_Hex.text = Editable.Factory.getInstance().newEditable(value)
-                val int_value = Integer.parseInt(value.toString())
+                var value = mEditText_Red_Hex.text
+                mEditText_Red_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+                var int_value = parseInt(value.toString(),16) //Integer.parseInt(value)
                 mSeekBar_Red.progress = int_value
             }
             false
@@ -121,9 +122,9 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         mEditText_Green_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
-                val value = mEditText_Green_Hex.text
-                mEditText_Green_Hex.text = Editable.Factory.getInstance().newEditable(value)
-                val int_value = Integer.parseInt(value.toString())
+                var value = mEditText_Green_Hex.text
+                mEditText_Green_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+                var int_value = parseInt(value.toString(),16)
                 mSeekBar_Green.progress = int_value
             }
             false
@@ -132,9 +133,9 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         mEditText_Blue_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
-                val value = mEditText_Blue_Hex.text
-                mEditText_Blue_Hex.text = Editable.Factory.getInstance().newEditable(value)
-                val int_value = Integer.parseInt(value.toString())
+                var value = mEditText_Blue_Hex.text
+                mEditText_Blue_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+                var int_value = parseInt(value.toString(),16)
                 mSeekBar_Blue.progress = int_value
             }
             false
@@ -143,9 +144,10 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         mEditText_Alpha_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
-                val value = mEditText_Alpha_Hex.text
-                mEditText_Alpha_Hex.text = Editable.Factory.getInstance().newEditable(value)
-                val int_value = Integer.parseInt(value.toString())
+                var value = mEditText_Alpha_Hex.text
+
+                mEditText_Alpha_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+                var int_value = parseInt(value.toString(),16)
                mSeekBar_Alpha.progress = int_value
             }
             false
@@ -193,6 +195,16 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                         mEditText_Alpha.setVisibility(View.INVISIBLE)
                     }
             }
+            mEditText_Red_Hex.isEnabled = true
+            mEditText_Green_Hex.isEnabled = true
+            mEditText_Blue_Hex.isEnabled = true
+            mEditText_Alpha_Hex.isEnabled = true
+            mEditText_Red.isEnabled = true
+            mEditText_Green.isEnabled = true
+            mEditText_Blue.isEnabled = true
+            mEditText_Alpha.isEnabled = true
+
+
         }
 
     }
