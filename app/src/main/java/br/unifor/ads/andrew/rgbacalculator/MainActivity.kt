@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+       // #[0-9a-fA-F]{8}${'$'}|#[0-9a-fA-F]{6}${'$'}|#[0-9a-fA-F]{4}${'$'}|
+        var regex_test = """[0-9a-fA-F]{2}${'$'}""".toRegex()
 
         //Seekbars
         mSeekBar_Red = findViewById(R.id.main_red_seekBar)
@@ -61,6 +62,32 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         //Radiobuttons
         mRadioDecimal = findViewById(R.id.main_decimal_radioButton)
         mRadioHexa = findViewById(R.id.main_hexadecimal_radioButton)
+
+        if(mRadioDecimal.isChecked){
+            mEditText_Red.visibility = View.VISIBLE
+            mEditText_Green.visibility = View.VISIBLE
+            mEditText_Blue.visibility = View.VISIBLE
+            mEditText_Alpha.visibility = View.VISIBLE
+
+            mEditText_Red_Hex.visibility = View.INVISIBLE
+            mEditText_Green_Hex.visibility = View.INVISIBLE
+            mEditText_Blue_Hex.visibility = View.INVISIBLE
+            mEditText_Alpha_Hex.visibility = View.INVISIBLE
+
+        }
+
+
+        mSeekBar_Red.setOnSeekBarChangeListener(this);
+        mSeekBar_Green.setOnSeekBarChangeListener(this);
+        mSeekBar_Blue.setOnSeekBarChangeListener(this);
+        mSeekBar_Alpha.setOnSeekBarChangeListener(this);
+
+        mSeekBar_Alpha.progress = 255
+
+        var aux0 = mEditText_Red_Hex.text
+        var aux1 = mEditText_Green_Hex.text
+        var aux2 = mEditText_Blue_Hex.text
+        var aux3 = mEditText_Alpha_Hex.text
 
         //All Listener for Edit Decimal
         mEditText_Red.setOnEditorActionListener { view, actionId, event ->
@@ -108,48 +135,78 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         }
         //All Listener for Edit HexaDecimal
+
         mEditText_Red_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 var value = mEditText_Red_Hex.text
-                mEditText_Red_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
-                var int_value = parseInt(value.toString(),16) //Integer.parseInt(value)
-                mSeekBar_Red.progress = int_value
+                if(value.matches(regex_test)) {
+                    mEditText_Red_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+
+                    aux0 = mEditText_Red_Hex.text
+
+                    var int_value = parseInt(value.toString(), 16) //Integer.parseInt(value)
+                    mSeekBar_Red.progress = int_value
+                }
             }
+            mEditText_Red_Hex.text = Editable.Factory.getInstance().newEditable(aux0.toString())
             false
 
         }
+
         mEditText_Green_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 var value = mEditText_Green_Hex.text
-                mEditText_Green_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
-                var int_value = parseInt(value.toString(),16)
-                mSeekBar_Green.progress = int_value
+                if(value.matches(regex_test)) {
+                    mEditText_Green_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+
+
+                     aux1 = mEditText_Green_Hex.text
+
+                    var int_value = parseInt(value.toString(), 16)
+                    mSeekBar_Green.progress = int_value
+                }
             }
+            mEditText_Green_Hex.text = Editable.Factory.getInstance().newEditable(aux1.toString())
             false
 
         }
+
         mEditText_Blue_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 var value = mEditText_Blue_Hex.text
-                mEditText_Blue_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
-                var int_value = parseInt(value.toString(),16)
-                mSeekBar_Blue.progress = int_value
+//
+                if(value.matches(regex_test)) {
+                    mEditText_Blue_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
+
+                    aux2 = mEditText_Blue_Hex.text
+
+                    var int_value = parseInt(value.toString(), 16)
+                    mSeekBar_Blue.progress = int_value
+                }
             }
-            false
+            mEditText_Blue_Hex.text = Editable.Factory.getInstance().newEditable(aux2.toString())
+                false
 
         }
+
         mEditText_Alpha_Hex.setOnEditorActionListener { view, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 var value = mEditText_Alpha_Hex.text
+                if(value.matches(regex_test)) {
+                    mEditText_Alpha_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
 
-                mEditText_Alpha_Hex.text = Editable.Factory.getInstance().newEditable(value.toString())
-                var int_value = parseInt(value.toString(),16)
-               mSeekBar_Alpha.progress = int_value
+
+                     aux3 = mEditText_Alpha_Hex.text
+
+                    var int_value = parseInt(value.toString(), 16)
+                    mSeekBar_Alpha.progress = int_value
+                }
             }
+            mEditText_Alpha_Hex.text = Editable.Factory.getInstance().newEditable(aux3.toString())
             false
 
         }
@@ -157,10 +214,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
 
     fun onRadioButtonClicked(view: View) {
-        mSeekBar_Red.setOnSeekBarChangeListener(this);
-        mSeekBar_Green.setOnSeekBarChangeListener(this);
-        mSeekBar_Blue.setOnSeekBarChangeListener(this);
-        mSeekBar_Alpha.setOnSeekBarChangeListener(this);
+
         if (view is RadioButton) {
             // Is the button now checked?
             val checked = view.isChecked
@@ -171,38 +225,44 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
                     if (checked) {
                         mRadioHexa.isChecked = false
-                        mEditText_Red.visibility = View.VISIBLE
-                        mEditText_Green.visibility = View.VISIBLE
-                        mEditText_Blue.visibility = View.VISIBLE
-                        mEditText_Alpha.visibility = View.VISIBLE
 
-                        mEditText_Red_Hex.visibility = View.INVISIBLE
-                        mEditText_Green_Hex.visibility = View.INVISIBLE
-                        mEditText_Blue_Hex.visibility = View.INVISIBLE
-                        mEditText_Alpha_Hex.visibility = View.INVISIBLE
                     }
                 R.id.main_hexadecimal_radioButton ->
                     if (checked) {
                         mRadioDecimal.isChecked = false
-                        mEditText_Red_Hex.setVisibility(View.VISIBLE)
-                        mEditText_Green_Hex.setVisibility(View.VISIBLE)
-                        mEditText_Blue_Hex.setVisibility(View.VISIBLE)
-                        mEditText_Alpha_Hex.setVisibility(View.VISIBLE)
 
-                        mEditText_Red.setVisibility(View.INVISIBLE)
-                        mEditText_Green.setVisibility(View.INVISIBLE)
-                        mEditText_Blue.setVisibility(View.INVISIBLE)
-                        mEditText_Alpha.setVisibility(View.INVISIBLE)
                     }
             }
-            mEditText_Red_Hex.isEnabled = true
-            mEditText_Green_Hex.isEnabled = true
-            mEditText_Blue_Hex.isEnabled = true
-            mEditText_Alpha_Hex.isEnabled = true
-            mEditText_Red.isEnabled = true
-            mEditText_Green.isEnabled = true
-            mEditText_Blue.isEnabled = true
-            mEditText_Alpha.isEnabled = true
+            if(mRadioDecimal.isChecked){
+                mEditText_Red.visibility = View.VISIBLE
+                mEditText_Green.visibility = View.VISIBLE
+                mEditText_Blue.visibility = View.VISIBLE
+                mEditText_Alpha.visibility = View.VISIBLE
+
+                mEditText_Red_Hex.visibility = View.INVISIBLE
+                mEditText_Green_Hex.visibility = View.INVISIBLE
+                mEditText_Blue_Hex.visibility = View.INVISIBLE
+                mEditText_Alpha_Hex.visibility = View.INVISIBLE
+
+            }else if(mRadioHexa.isChecked){
+                mEditText_Red_Hex.setVisibility(View.VISIBLE)
+                mEditText_Green_Hex.setVisibility(View.VISIBLE)
+                mEditText_Blue_Hex.setVisibility(View.VISIBLE)
+                mEditText_Alpha_Hex.setVisibility(View.VISIBLE)
+
+                mEditText_Red.setVisibility(View.INVISIBLE)
+                mEditText_Green.setVisibility(View.INVISIBLE)
+                mEditText_Blue.setVisibility(View.INVISIBLE)
+                mEditText_Alpha.setVisibility(View.INVISIBLE)
+            }
+//            mEditText_Red_Hex.isEnabled = true
+//            mEditText_Green_Hex.isEnabled = true
+//            mEditText_Blue_Hex.isEnabled = true
+//            mEditText_Alpha_Hex.isEnabled = true
+//            mEditText_Red.isEnabled = true
+//            mEditText_Green.isEnabled = true
+//            mEditText_Blue.isEnabled = true
+//            mEditText_Alpha.isEnabled = true
 
 
         }
